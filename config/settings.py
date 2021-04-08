@@ -24,7 +24,7 @@ SECRET_KEY = '!=m0g*b1=dz&(yc%o9yy7tsfvue+h&iz9v*cah^@=gc#i@32fh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mkspiast.herokuapp.com']
 
 # Application definition
 
