@@ -1,0 +1,332 @@
+{% extends 'core/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+   <!-- Basic -->
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <!-- Mobile Metas -->
+   <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+   <!-- Site Metas -->
+   <title>Szczegóły</title>
+   <meta name="keywords" content="">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+   <!-- Site CSS -->
+   <link rel="stylesheet" href="{% static 'style.css' %}">
+   <!-- Colors CSS -->
+   <link rel="stylesheet" href="{% static 'css/colors.css' %}">
+   <!-- ALL VERSION CSS -->	
+   <link rel="stylesheet" href="{% static 'css/versions.css' %}">
+   <!-- Responsive CSS -->
+   <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+   <!-- Custom CSS -->
+   <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+   <!-- font family -->
+   <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+   <!-- end font family -->
+   <link rel="stylesheet" href="{% static 'css/3dslider.css' %}" />
+   <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+   <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+   <script src="{% static 'js/3dslider.js' %}"></script>
+</head>
+
+   <body class="game_info" data-spy="scroll" data-target=".header">
+      <!-- LOADER -->
+      <div id="preloader">
+         <img class="preloader" src="{% static 'images/loading-img.gif' %}" alt="">
+      </div>
+      <!-- END LOADER -->
+
+      {% block content %}
+      <section id="contant" class="contant main-heading single-blog">
+         <div class="row">
+            <div class="container">
+               <div class="col-md-9">
+                  <div class="feature-post">
+                     <div class="feature-img">
+                        <img src="{{ article.image.url }}" class="img-responsive" alt="#" />
+                     </div>
+                     <div class="feature-cont">
+                        <div class="post-people">
+                           <div class="left-profile">
+                              <div class="post-info">
+                                 <img src="{% static 'images/anonim.png' %}" alt="#" />
+                                 <span>
+                                    <h4>Dodał: {{article.author}}</h4>
+                                    <h5>{{ article.published_date }}</h5>
+                                 </span>
+                              </div>
+                              <span class="share"></span>
+                           </div>
+                        </div>
+                        <div class="post-heading">
+                           <h3>{{ article.title }}</h3>
+                           <p>{{ article.text }}</p>
+                        </div>
+                     </div>
+
+                     <div class="commant-section">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                           <h3 id="comments">Komentarze: ({{comments_number}})</h3>
+                           {% for comment in article.comments.all %}
+                           <div class="commant-text row">
+                              <div class="col-lg-2 col-md-2 col-sm-4 col-xs-hidden">
+                                 <div class="profile">
+                                    <img class="img-responsive" src="{% static 'images/anonim.png' %}" alt="#">
+                                 </div>
+                              </div>
+                              <div class="col-lg-10 col-md-10 col-sm-8 col-xs-hidden">
+                                 <h5>{{ comment.author }}</h5>
+                                 <p><span class="c_date">{{ comment.published_date }}</span> | <span><a rel="nofollow" class="comment-reply-link" href="#">Reply</a></span></p>
+                                 <p class="msg">{{ comment.text }}</p>
+                              </div>
+                           </div>
+                           {% endfor %}
+
+                        </div>
+                     </div>
+                     <div class="commant-section">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                           <h3>Dodaj komentarz</h3>
+                           <div class="form-command row">
+                              <form method="post" action="{% url 'add_comment' pk=article.pk %}" class="form-horizontal1">
+                                 <div class="comment-box-full comment-box-half">{{ form.as_p }}</div>
+                                 {% csrf_token %}
+                                 <div class="col-lg-12">
+                                       <div class="comment-box-submit">
+                                          <input value="Dodaj " type="submit" class="btn btn-primary btn-lg" style="center">
+                                       </div>
+                                    </div>
+                              </form>
+
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="feature-contant">
+                  </div>
+               </div>
+               <div class="col-md-3">
+
+                  {% comment %}
+                     <div class="blog-sidebar">
+                     <div class="blog-sidebar">
+                        <h4 class="heading">Top Categories</h4>
+                        <div class="category-menu">
+                           <ul>
+                              <li><a href="#">Cricket</a></li>
+                              <li><a href="#">Football</a></li>
+                              <li><a href="#">Hockey</a></li>
+                              <li><a href="#">Tennis</a></li>
+                              <li><a href="#">Basketball</a></li>
+                              <li><a href="#">Golf</a></li>
+                              <li><a href="#">Cycling</a></li>
+                              <li><a href="#">Motorsports</a></li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="blog-sidebar">
+                     <h4 class="heading">Popular News</h4>
+                     <div class="category-menu">
+                        <ul>
+                           <li>
+                              <span><img src="{% static 'images/anonim.png' %}" alt="#"></span>
+                              <span>
+                                 <p>Two touch penalties, imaginary cards</p>
+                                 <p class="date">22 Feb, 2016</p>
+                              </span>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                  {% endcomment %}
+
+                  <!-- TABLE -->
+                  <aside id="sidebar" class="left-bar">
+                     <div class="feature-matchs">
+                        <table class="table table-bordered table-hover">
+                           <thead>
+                              <tr>
+                                 <th>#</th>
+                                 <th>Nazwa</th>
+                                 <th>Pkt</th>
+                                 <th>Z</th>
+                                 <th>R</th>
+                                 <th>P</th>
+                                 <th>Bramki</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                           {% for team in teams %}
+                              <tr>
+                                 <td>{{ forloop.counter }}</td>
+                                 <td>{{ team.name }}</td>
+                                 <td>{{ team.points }}</td>
+                                 <td>{{ team.win }}</td>
+                                 <td>{{ team.draw }}</td>
+                                 <td>{{ team.loose }}</td>
+                                 <td>{{ team.goals_shot }}-{{ team.goals_lost }}</td>
+                              </tr>
+                           {% endfor %}
+                           </tbody>
+                        </table>
+                     </div>
+                  </aside>
+
+                  <!-- SCHEDULE -->
+                  <h4 style="padding-top:35px;">{{ next_match_week }}. kolejka</h4>
+                  <aside id="sidebar" class="left-bar">
+                     <div class="feature-matchs">
+                        <div class="team-btw-match">
+                           {% for match in matches_test %}
+                              {% if match.match_week == next_match_week %}
+                                 <ul>
+                                    <li>
+                                       <img src="{{MEDIA_URL}}{{match.home_team.logo}}" alt="">
+                                       <span>{{ match.home_team }}</span>
+                                    </li>
+
+                                    <li class="vs"><span>{{ match.home_team_goals }} : {{ match.away_team_goals }}</span></li>
+
+                                    <li>
+                                       <img src="{{MEDIA_URL}}{{match.away_team.logo}}" alt="">
+                                       <span>{{ match.away_team }}</span>
+                                    </li>
+                                    <li class="vs"><span>{{ match.date }}</span></li>
+                                 </ul>
+
+                              {% endif %}
+
+                           {% endfor %}
+                        </div>
+                     </div>
+                  </aside>
+
+                  {% comment %}
+                     <aside id="sidebar" class="left-bar">
+                     <div class="feature-matchs">
+                        <div class="team-btw-match">
+                           <ul>
+                              <li>
+                                 <img src="{% static 'images/img-01_002.png' %}" alt="">
+                                 <span>Portugal</span>
+                              </li>
+                              <li class="vs"><span>vs</span></li>
+                              <li>
+                                 <img src="{% static 'images/img-02.png' %}" alt="">
+                                 <span>Germany</span>
+                              </li>
+                           </ul>
+                           <ul>
+                              <li>
+                                 <img src="{% static 'images/img-03_002.png' %}" alt="">
+                                 <span>Portugal</span>
+                              </li>
+                              <li class="vs"><span>vs</span></li>
+                              <li>
+                                 <img src="{% static 'images/img-04_003.png' %}" alt="">
+                                 <span>Germany</span>
+                              </li>
+                           </ul>
+                           <ul>
+                              <li>
+                                 <img src="{% static 'images/img-05_002.png' %}" alt="">
+                                 <span>Portugal</span>
+                              </li>
+                              <li class="vs"><span>vs</span></li>
+                              <li>
+                                 <img src="{% static 'images/img-06.png' %}" alt="">
+                                 <span>Germany</span>
+                              </li>
+                           </ul>
+                           <ul>
+                              <li>
+                                 <img src="{% static 'images/img-07_002.png' %}" alt="">
+                                 <span>Portugal</span>
+                              </li>
+                              <li class="vs"><span>vs</span></li>
+                              <li>
+                                 <img src="{% static 'images/img-08.png' %}" alt="">
+                                 <span>Germany</span>
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                  </aside>
+                     <aside id="sidebar" class="left-bar">
+                     <div class="banner-sidebar">
+                        <img class="img-responsive" src="{% static 'images/img-05.jpg' %}" alt="#" />
+                        <h3>Miejsce na reklamę</h3>
+                     </div>
+                  </aside>
+                     <aside id="sidebar" class="left-bar">
+                     <div class="feature-matchs">
+                        <table class="table table-bordered table-hover">
+                           <thead>
+                              <tr>
+                                 <th>#</th>
+                                 <th>Team</th>
+                                 <th>P</th>
+                                 <th>W</th>
+                                 <th>L</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr>
+                                 <td>1</td>
+                                 <td><img src="{% static 'images/img-01_004.png' %}" alt="">Liverpool</td>
+                                 <td>10</td>
+                                 <td>12</td>
+                                 <td>20</td>
+                              </tr>
+                              <tr>
+                                 <td>2</td>
+                                 <td><img src="{% static 'images/img-02_002.png' %}" alt="">Chelsea</td>
+                                 <td>10</td>
+                                 <td>12</td>
+                                 <td>20</td>
+                              </tr>
+                              <tr>
+                                 <td>3</td>
+                                 <td><img src="{% static 'images/img-03_003.png" alt="">Norwich City</td>
+                                 <td>20</td>
+                                 <td>15</td>
+                                 <td>20</td>
+                              </tr>
+                              <tr>
+                                 <td>4</td>
+                                 <td><img src="{% static 'images/img-04_002.png' %}" alt="">West Brom</td>
+                                 <td>60</td>
+                                 <td>10</td>
+                                 <td>60</td>
+                              </tr>
+                              <tr>
+                                 <td>5</td>
+                                 <td><img src="{% static 'images/img-05.png' %}" alt="">sunderland</td>
+                                 <td>30</td>
+                                 <td>06</td>
+                                 <td>30</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </aside>
+                  {% endcomment %}
+               </div>
+            </div>
+         </div>
+      </section>
+
+      <a href="#home" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+      <!-- ALL JS FILES -->
+      <script src="{% static 'js/all.js' %}"></script>
+      <!-- ALL PLUGINS -->
+      <script src="{% static 'js/custom.js' %}"></script>
+      {% endblock %}
+   </body>
+
+</html>
