@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from accounts.views import SignIn, Logout, SignUp
-from core.views import IndexView, blog, contact, news, ArticleDetailView, team, AddCommentView, AdminListView, \
+from core.views import IndexView, blog, contact, news, ArticleDetailView, TeamView, AddCommentView, AdminListView, \
     AdminArticlesView, AdminTeamsView, AdminMatchesView, AdminMatchweeksView, AddArticleView, AddMatchWeekView, \
     AddTeamView, AddMatchView, EditArticleView, EditTeamView, EditMatchView, EditMatchWeekView, DeleteArticleView, \
     DeleteTeamView, DeleteMatchView, DeleteMatchWeekView, AdminPlayersView, AddPlayerView, EditPlayerView, \
@@ -30,6 +30,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', IndexView.as_view(), name='index'),
     path('article_detail/<pk>/', ArticleDetailView.as_view(), name='article_detail'),
+    path('team/', TeamView.as_view(), name='team'),
 
     path('admin_view/', AdminListView.as_view(), name='admin_list'),
     path('admin_articles/', AdminArticlesView.as_view(), name='admin_articles'),
@@ -73,7 +74,7 @@ urlpatterns = [
     path('base/', base, name='base'),
     path('contact/', contact, name='contact'),
     path('news/', news, name='news'),
-    path('team/', team, name='team'),
+
     path('about/', about, name='about'),
 
 ]

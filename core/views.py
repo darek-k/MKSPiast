@@ -34,10 +34,6 @@ def news(request):
     return render(request, 'core/news.html')
 
 
-def team(request):
-    return render(request, 'core/team.html')
-
-
 """ Detail Views """
 
 
@@ -88,10 +84,8 @@ class IndexView(ListView):
             if match.home_team_goals == ' -':
                 context['next_match_week'] = match.match_week
 
-
         context['piast_next_match'] = MatchTest.objects.filter(match_week=context['next_match_week']).filter \
             (Q(home_team='Piast Człuchów') | Q(away_team='Piast Człuchów'))
-
 
         # next match counting
         for check in context['piast_next_match']:
@@ -124,7 +118,16 @@ class IndexView(ListView):
                 else:
                     context['minutes'] = f'{minutes} Minut'
 
+        return context
 
+
+class TeamView(ListView):
+    model = Player
+    template_name = 'core/team.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+        context['players'] = Player.objects.all()
         return context
 
 
