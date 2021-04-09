@@ -496,9 +496,9 @@
      width: 100%;
 }
  .team-btw-match ul li span {
-     float: left;
+
      width: 100%;
-     font-size: 18px;
+     font-size: 25px;
      font-weight: 600;
 }
  .vs {
@@ -518,7 +518,7 @@
  .matchs-vs {
      float: left;
      width: 100%;
-     background: #d8302f;
+     background: url("/static/images/grass.jpg");
      color: #fff;
      min-height: 220px;
      padding: 90px 0;
@@ -528,7 +528,7 @@
  .matchs-info {
      float: left;
      width: 100%;
-     background: #ffcb05;
+     background: url("/static/images/grass.jpg");
 }
  .about-us {
      float: left;

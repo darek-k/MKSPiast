@@ -253,26 +253,26 @@
          <div class="col-md-6 col-sm-6 col-xs-12">
             <div class="row">
                <div class="full">
-                  <div class="matchs-vs" style="background-color: lightblue; color:black">
+                  <div class="matchs-vs">
                      <div class="vs-team">
-                        <div class="team-btw-match" style="border:solid;">
+                        <div class="team-btw-match" style="">
                            {% for i in piast_next_match %}
-                           <ul>
-                              <li>
-                                 <img src="{{MEDIA_URL}}{{i.home_team.logo}}" alt="">
-                                 <span>{{ i.home_team }} </span>
-                              </li>
-                              {% comment %}
-                              <li class="vs"><span>vs</span></li>
-                              {% endcomment %}
-                              <li><span> - </span></li>
-                              <li>
-                                 <img src="{{MEDIA_URL}}{{i.away_team.logo}}" alt="">
-                                 <span style="">{{ i.away_team }} </span>
-                              </li>
-                              <li><br><span>{{ i.date }}</span></li>
-                                 {% endfor %}
-                           </ul>
+                              <ul>
+                                 <li>
+                                    <img src="{{MEDIA_URL}}{{i.home_team.logo}}" alt="">
+                                    <span>{{ i.home_team }} </span>
+                                 </li>
+
+                                 <li class="vs">
+                                    <span>VS</span>
+                                 </li>
+
+                                 <li>
+                                    <img src="{{MEDIA_URL}}{{i.away_team.logo}}" alt="">
+                                    <span style="">{{ i.away_team }} </span>
+                                 </li>
+                              </ul>
+                           {% endfor %}
                         </div>
                      </div>
                   </div>
