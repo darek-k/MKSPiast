@@ -62,7 +62,7 @@ urlpatterns = [
          name='delete_next_matchweek'),
     path('admin_players/delete_player/<pk>/', DeletePlayerView.as_view(), name='delete_player'),
 
-    path('admin_teams/automatic_team_download/', DownloadTeams.as_view(), name='automatic_team_download'),
+    path('admin_teams/team_download/', DownloadTeams.as_view(), name='team_download'),
     path('admin_matches/automatic_match_download/', DownloadMatches.as_view(), name='automatic_match_download'),
 
     path('register/', SignUp.as_view(), name='register'),

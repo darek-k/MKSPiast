@@ -451,6 +451,10 @@ def take_soup(url):
 
 
 class DownloadTeams(TemplateView):
+    def __init__(self):
+        if Team.objects.all().count() != 20:
+            self.create_team_objects(self.download_teams())
+
     template_name = 'core/admin_teams.html'
 
     def download_teams(self):
@@ -488,6 +492,7 @@ class DownloadTeams(TemplateView):
         return created_teams
 
     def update_team_objects(self, team_dict):
+        print('Uruchomiono update_team_objects()')
         updated_teams = None
         for team in Team.objects.all():
             if team.matches < team_dict[team.name]['matches']:
@@ -554,6 +559,7 @@ class DownloadMatches(TemplateView):
         return matches_dict
 
     def create_match_objects(self, matches_dict):
+
         MatchTest.objects.all().delete()
         created_matches = None
         for matchweek, list_of_dicts in matches_dict.items():
