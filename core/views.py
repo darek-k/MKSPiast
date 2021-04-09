@@ -88,37 +88,42 @@ class IndexView(ListView):
             if match.home_team_goals == ' -':
                 context['next_match_week'] = match.match_week
 
-        context['piast_next_match'] = MatchTest.objects.filter(match_week=21).filter \
+
+        context['piast_next_match'] = MatchTest.objects.filter(match_week=context['next_match_week']).filter \
             (Q(home_team='Piast Człuchów') | Q(away_team='Piast Człuchów'))
 
-        # context['piast_next_match'] = MatchTest.objects.filter(match_week=context['next_match_week'].match_week).filter \
-        #     (Q(home_team__name='Piast Człuchów') | Q(away_team__name='Piast Człuchów'))
 
         # next match counting
         for check in context['piast_next_match']:
-            context['result'] = check.date - datetime.now(timezone.utc)
-            days = context['result'].days
-            hours = math.floor(context['result'].seconds / 3600)
-            minutes = (context['result'].seconds // 60) % 60
 
-            if days == 1:
-                context['days'] = f'{days} Dzień'
+            if context['piast_next_match'].first().date < datetime.now(timezone.utc):
+                context['days'] = 'Brak informacji'
             else:
-                context['days'] = f'{days} Dni'
+                context['piast_next_match_date'] = context['piast_next_match'].first().date
+                context['result'] = check.date - datetime.now(timezone.utc)
+                days = context['result'].days
+                hours = math.floor(context['result'].seconds / 3600)
+                minutes = (context['result'].seconds // 60) % 60
 
-            if hours == 1:
-                context['hours'] = f'{hours} Godzina'
-            elif hours in (2, 3, 4, 22, 23, 24):
-                context['hours'] = f'{hours} Godziny'
-            else:
-                context['hours'] = f'{hours} Godzin'
+                if days == 1:
+                    context['days'] = f'{days} Dzień'
+                else:
+                    context['days'] = f'{days} Dni'
 
-            if minutes == 1:
-                context['minutes'] = f'{minutes} Minuta'
-            elif minutes in (2, 3, 4, 22, 23, 24):
-                context['minutes'] = f'{minutes} Minuty'
-            else:
-                context['minutes'] = f'{minutes} Minut'
+                if hours == 1:
+                    context['hours'] = f'{hours} Godzina'
+                elif hours in (2, 3, 4, 22, 23, 24):
+                    context['hours'] = f'{hours} Godziny'
+                else:
+                    context['hours'] = f'{hours} Godzin'
+
+                if minutes == 1:
+                    context['minutes'] = f'{minutes} Minuta'
+                elif minutes in (2, 3, 4, 22, 23, 24):
+                    context['minutes'] = f'{minutes} Minuty'
+                else:
+                    context['minutes'] = f'{minutes} Minut'
+
 
         return context
 
