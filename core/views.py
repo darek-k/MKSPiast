@@ -121,7 +121,7 @@ class IndexView(ListView):
         return context
 
 
-class TeamView(ListView):
+class PlayersView(ListView):
     model = Player
     template_name = 'core/team.html'
 
