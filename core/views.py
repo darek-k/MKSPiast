@@ -14,8 +14,8 @@ from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
 
 
-def about(request):
-    return render(request, 'core/about.html')
+def club(request):
+    return render(request, 'core/club.html')
 
 
 def base(request):

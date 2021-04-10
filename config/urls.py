@@ -18,7 +18,7 @@ from core.views import IndexView, blog, contact, news, ArticleDetailView, Player
     AdminArticlesView, AdminTeamsView, AdminMatchesView, AdminMatchweeksView, AddArticleView, AddMatchWeekView, \
     AddTeamView, AddMatchView, EditArticleView, EditTeamView, EditMatchView, EditMatchWeekView, DeleteArticleView, \
     DeleteTeamView, DeleteMatchView, DeleteMatchWeekView, AdminPlayersView, AddPlayerView, EditPlayerView, \
-    DeletePlayerView, about, base, DeleteNextMatchWeekView, AdminNextMatchWeekView, AddNextMatchWeekView, \
+    DeletePlayerView, club, base, DeleteNextMatchWeekView, AdminNextMatchWeekView, AddNextMatchWeekView, \
     EditNextMatchWeekView, DownloadTeams, DownloadMatches
 from django.conf import settings
 from django.conf.urls.static import static
@@ -75,7 +75,7 @@ urlpatterns = [
     path('contact/', contact, name='contact'),
     path('news/', news, name='news'),
 
-    path('about/', about, name='about'),
+    path('club/', club, name='club'),
 
 ]
 
