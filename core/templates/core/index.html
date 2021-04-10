@@ -115,7 +115,7 @@
                                           <li class="active"><a href="#article">Aktualności</a></li>
                                           <li><a href="{% url 'club' %}">Klub</a></li>
                                           <li><a href="{% url 'players' %}">Skład</a></li>
-                                          <li><a href="http://www.pomorskifutbol.pl/liga.php?id=1309" target="_blank">Terminarz</a></li>
+                                          <li><a href="http://www.pomorskifutbol.pl/liga.php?id=1309" target="_blank">Terminarz i tabela</a></li>
                                           <li><a href="#">Sponsorzy</a></li>
 
                                           {% comment %}
@@ -174,8 +174,8 @@
                                           <li><a href="#kontakt">Kontakt</a></li>
                                           <li><a href="#">Forum</a></li>
                                           <li><a href="#">Galeria</a></li>
-                                          <li><a href="#">Rozgrywki ligowe</a></li>
                                           <li><a href="#">Juniorzy</a></li>
+                                          <li><a href="#">Człuchów</a></li>
                                           {% if request.user.is_staff %}
                                              <li><a href="{% url 'admin_list' %}">Admin</a></li>
                                           {% endif %}
