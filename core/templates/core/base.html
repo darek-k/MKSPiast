@@ -117,14 +117,8 @@
                                     </div>
                                     <div class="collapse navbar-collapse js-navbar-collapse">
                                        <ul class="nav navbar-nav">
-                                          <li class="active"><a href="{% url 'index' %}">Aktualności</a></li>
-                                          <li><a href="{% url 'club' %}">Klub</a></li>
-                                          <li><a href="{% url 'players' %}">Skład</a></li>
-                                          <li><a href="http://www.pomorskifutbol.pl/liga.php?id=1309" target="_blank">Terminarz i tabela</a></li>
-                                          <li><a href="#" onclick="alertFunction()">Sponsorzy</a></li>
-
                                           {% comment %}
-                                          <li class="dropdown mega-dropdown">
+                                             <li class="dropdown mega-dropdown">
                                              <a href="match" class="dropdown-toggle" data-toggle="dropdown">Match<span class="caret"></span></a>
                                              <ul class="dropdown-menu mega-dropdown-menu">
                                                 <li class="col-sm-8">
@@ -176,12 +170,15 @@
                                           </li>
                                           {% endcomment %}
 
-
-                                          <li><a href="#kontakt">Kontakt</a></li>
-                                          <li><a href="#">Forum</a></li>
+                                          <li class="active"><a href="{% url 'index' %}">Aktualności</a></li>
+                                          <li><a href="{% url 'club' %}">Klub</a></li>
+                                          <li><a href="{% url 'players' %}">Skład</a></li>
+                                          <li><a href="http://www.pomorskifutbol.pl/liga.php?id=1309" target="_blank">Terminarz i tabela</a></li>
                                           <li><a href="#">Galeria</a></li>
-                                          <li><a href="#">Juniorzy</a></li>
+                                          <li><a href="#" onclick="alertFunction()">Sponsorzy</a></li>
+                                          <li><a href="#kontakt">Kontakt</a></li>
                                           <li><a href="https://czluchow.naszemiasto.pl/" target="_blank">Człuchów</a></li>
+                                          <li><a href="http://www.arka.gdynia.pl/index.php" target="_blank">Arka Gdynia</a></li>
 
                                           {% if request.user.is_staff %}
                                           <li><a href="{% url 'admin_list' %}">Admin</a></li>

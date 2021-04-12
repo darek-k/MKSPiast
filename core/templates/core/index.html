@@ -121,6 +121,7 @@
                                           <li><a href="{% url 'club' %}">Klub</a></li>
                                           <li><a href="{% url 'players' %}">Skład</a></li>
                                           <li><a href="http://www.pomorskifutbol.pl/liga.php?id=1309" target="_blank">Terminarz i tabela</a></li>
+                                          <li><a href="#" onclick="alertFunction()">Galeria</a></li>
                                           <li><a href="#" onclick="alertFunction()">Sponsorzy</a></li>
 
                                           {% comment %}
@@ -177,10 +178,9 @@
                                           {% endcomment %}
 
                                           <li><a href="#kontakt">Kontakt</a></li>
-                                          <li><a href="#" onclick="alertFunction()">Forum</a></li>
-                                          <li><a href="#" onclick="alertFunction()">Galeria</a></li>
-                                          <li><a href="#" onclick="alertFunction()">Juniorzy</a></li>
                                           <li><a href="https://czluchow.naszemiasto.pl/" target="_blank">Człuchów</a></li>
+                                          <li><a href="http://www.arka.gdynia.pl/index.php" target="_blank">Arka Gdynia</a></li>
+
                                           {% if request.user.is_staff %}
                                              <li><a href="{% url 'admin_list' %}">Admin</a></li>
                                           {% endif %}
@@ -189,7 +189,7 @@
                                     <!-- /.nav-collapse -->
                                  </nav>
 
-                              </div>
+                              </div>b
                            </div>
                         </div>
                      </div>

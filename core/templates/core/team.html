@@ -50,28 +50,31 @@
          <div class="row">
             <div class="container">
 
-               {% for player in players %}
 
+               {% for player in players %}
                   <div class="col-md-3">
                      <div class="team-column style-2">
-                        {% if player.photo %}
-                           <img src="{{ MEDIA_URL }}{{ player.photo }} " alt="" style="max-width: 100%; height: 368px;">
-                        {% else %}
-                           <img src="{% static 'images/default_player.jpg' %}" alt="#" style="max-width: 100%; height: 368px;" >
-                        {% endif %}
-                        <div class="player-name">
-                           {% if player.position %}
-                              <div class="desination-2">{{ player.position }}</div>
+
+
+                           {% if player.photo %}
+                              <img src="{{ MEDIA_URL }}{{ player.photo }} " alt="" style="max-width: 100%; height: 368px;">
                            {% else %}
-                              <div class="desination-2">Zawodnik</div>
+                              <img src="{% static 'images/default_player.jpg' %}" alt="#" style="max-width: 100%; height: 368px;" >
                            {% endif %}
-                           <h5>{{ player }}</h5>
-                           {% if player.number %}
-                              <span class="player-number">{{ player.number }}</span>
-                           {% else %}
-                              <span class="player-number">#</span>
-                           {% endif %}
-                        </div>
+                           <div class="player-name">
+                              {% if player.position %}
+                                 <div class="desination-2">{{ player.position }}</div>
+                              {% else %}
+                                 <div class="desination-2">-</div>
+                              {% endif %}
+                              <h5>{{ player }}</h5>
+                              {% if player.number %}
+                                 <span class="player-number">{{ player.number }}</span>
+                              {% else %}
+                                 <span class="player-number">#</span>
+                              {% endif %}
+                           </div>
+
 
                         <div class="overlay">
                            <div class="team-detail-hover position-center-x">
