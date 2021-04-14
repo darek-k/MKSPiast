@@ -24,6 +24,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG_VALUE = (os.environ.get('DEBUG_VALUE') == 'True')
+DEBUG_PROPAGATE_EXCEPTIONS = True
 DEBUG = True
 
 ALLOWED_HOSTS = ['mkspiast.herokuapp.com']
@@ -127,7 +128,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'config', 'static'),
+    os.path.join(BASE_DIR, 'static'),
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
