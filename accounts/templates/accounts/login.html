@@ -41,11 +41,16 @@
       <!-- END LOADER -->
 
       {% block content %}
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <h1>Logowanie</h1>
+      <div style="width:800px; margin:0 auto; padding-bottom:100px;">
          <form method="post" enctype="multipart/form-data" class="form-horizontal1">
             {{ form|crispy }}
             {% csrf_token %}
-                     <input value="Zaloguj " type="submit" class="btn btn-primary btn-lg" style="center">
+            <input value="Zaloguj " type="submit" class="btn btn-primary btn-lg" style="center">
          </form>
+      </div>
+
       {% endblock %}
 
       <a href="#home" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>

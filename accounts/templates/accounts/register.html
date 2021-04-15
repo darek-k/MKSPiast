@@ -10,10 +10,20 @@
 </head>
 
 <body>
+
 {% block content %}
-<form method="post">{% csrf_token %}
-    {% crispy form %}
-</form>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<h1>Rejestracja</h1>
+
+<div style="width:800px; margin:0 auto; padding-bottom:100px;">
+    <form method="post" class="form-horizontal1">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <input value="Zarejestruj " type="submit" class="btn btn-primary btn-lg" style="center">
+    </form>
+</div>
+
+
 {% endblock %}
 </body>
 </html>
