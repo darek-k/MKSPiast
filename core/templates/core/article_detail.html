@@ -77,7 +77,10 @@
                               </div>
                               <div class="col-lg-10 col-md-10 col-sm-8 col-xs-hidden">
                                  <h5>{{ comment.author }}</h5>
+                                 {% comment %}
+<!--                                 'reply' button-->
                                  <p><span class="c_date">{{ comment.published_date }}</span> | <span><a rel="nofollow" class="comment-reply-link" href="#">Reply</a></span></p>
+                                 {% endcomment %}
                                  <p class="msg">{{ comment.text }}</p>
                               </div>
                            </div>
