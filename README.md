@@ -1,4 +1,4 @@
-# Football Club Web Application - MKS Piast Człuchów
+# Football Club Web Application - MKS Piast Człuchów: https://mkspiast.herokuapp.com/
 
 Web Application that contains articles and information about club and players. 
 It automatically update match schedule, scores and table using **BeautifulSoup** and data from another websites.
