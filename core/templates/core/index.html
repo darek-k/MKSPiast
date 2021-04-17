@@ -405,7 +405,7 @@
                         <div class="news-post-detail">
                            <span class="date">{{ article.published_date}}</span>
                            <h2><a href="{% url 'article_detail' pk=article.pk %}">{{ article.title }}</a></h2>
-                           <p>{{ article.text|truncatewords:25 }}<a href="{% url 'article_detail' pk=article.pk %}">Czytaj dalej</a></p>
+                           <p>{{ article.text|truncatewords:25 }}<a style="color:red;" href="{% url 'article_detail' pk=article.pk %}">Czytaj dalej</a></p>
                         </div>
                      </div>
                      {% endfor %}
