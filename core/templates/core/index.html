@@ -431,7 +431,7 @@
                      <div class="col-md-3">
                      <div class="team-column style-2">
                         {% if player.photo %}
-                           <img src="{{ MEDIA_URL }}{{ player.photo }} " alt="" style="max-width: 100%; height: 368px;">
+                           <img src="{{ player.photo.url }} " alt="" style="max-width: 100%; height: 368px;">
                         {% else %}
                            <img src="{% static 'images/unknown_player.jpg' %}" alt="#" style="max-width: 100%; height: 368px;" >
                         {% endif %}
