@@ -47,13 +47,13 @@
             <div class="container">
 
                {% for player in players %}
-                  <div class="col-md-3">
+                  <div class="col-md-3" style="padding-bottom: 30px;">
                      <div class="team-column style-2">
 
                            {% if player.photo %}
-                              <img src="{{ player.photo.url }}" alt="" style="width: 198,3px; height: 368px;">
+                              <img src="{{ player.photo.url }}" alt="" style="max-width: 245px; height: 368px;">
                            {% else %}
-                              <img src="{% static 'images/default_player.jpg' %}" alt="#" style="max-width: 100%; height: 368px;" >
+                              <img src="{% static 'images/default_player.jpg' %}" alt="#" style="max-width: 245px; height: 368px;" >
                            {% endif %}
                            <div class="player-name">
                               {% if player.position %}
