@@ -91,7 +91,7 @@ class IndexView(ListView):
         for check in context['piast_next_match']:
 
             if context['piast_next_match'].first().date < datetime.now(timezone.utc):
-                context['days'] = 'Rozgrywki zawieszone'
+                context['days'] = 'Brak daty'
             else:
                 context['piast_next_match_date'] = context['piast_next_match'].first().date
                 context['result'] = check.date - datetime.now(timezone.utc)
