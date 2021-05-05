@@ -468,19 +468,22 @@ class DownloadTeams(TemplateView):
     def download_teams(self):
         table = take_soup('http://www.pomorskifutbol.pl/liga.php?id=1309').find('table', class_='tabela')
         rows = table.find_all('tr')[2:]
+        proper_number_of_rows = 14
 
         team_dict = {}
         for row in rows:
             cells = row.find_all('td')
-            club_name = cells[1].text.strip()
-            team_dict[club_name] = {}
-            team_dict[club_name]['matches'] = int(cells[2].text)
-            team_dict[club_name]['points'] = int(cells[3].text)
-            team_dict[club_name]['win'] = int(cells[4].text)
-            team_dict[club_name]['draw'] = int(cells[5].text)
-            team_dict[club_name]['loose'] = int(cells[6].text)
-            team_dict[club_name]['goals_shot'] = int(cells[7].text[:3])
-            team_dict[club_name]['goals_lost'] = int(cells[7].text[-3:])
+
+            if len(cells) == proper_number_of_rows:
+                club_name = cells[1].text.strip()
+                team_dict[club_name] = {}
+                team_dict[club_name]['matches'] = int(cells[2].text)
+                team_dict[club_name]['points'] = int(cells[3].text)
+                team_dict[club_name]['win'] = int(cells[4].text)
+                team_dict[club_name]['draw'] = int(cells[5].text)
+                team_dict[club_name]['loose'] = int(cells[6].text)
+                team_dict[club_name]['goals_shot'] = int(cells[7].text[:3])
+                team_dict[club_name]['goals_lost'] = int(cells[7].text[-3:])
 
         return team_dict
 
