@@ -292,7 +292,9 @@
                            <li><span class="hours">{{ hours }}  </span></li>
                            <li><span class="minutes">{{ minutes }} </span></li>
                         </ul>
-                        <span>{{ piast_next_match_date }}</span>
+                        {% if piast_next_match_date != None %}
+                           <span>{{ piast_next_match_date }}</span>
+                        {% endif %}
                      {% endfor %}
                   </div>
                </div>
@@ -332,7 +334,13 @@
                                        <img src="{{MEDIA_URL}}{{match.away_team.logo}}" alt="">
                                        <span>{{ match.away_team }}</span>
                                     </li>
-                                    <li class="vs"><span>{{ match.date }}</span></li>
+
+                                    {% if match.date == None %}
+                                       <li class="vs"><span>Brak daty</span></li>
+                                    {% else %}
+                                       <li class="vs"><span>{{ match.date }}</span></li>
+                                    {% endif %}
+
                                  </ul>
 
                               {% endif %}

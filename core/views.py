@@ -89,34 +89,35 @@ class IndexView(ListView):
 
         # next match counting
         for check in context['piast_next_match']:
+                try:
+                    context['piast_next_match_date'] = context['piast_next_match'].first().date
+                    context['result'] = check.date - datetime.now(timezone.utc)
+                    days = context['result'].days
+                    hours = math.floor(context['result'].seconds / 3600)
+                    minutes = (context['result'].seconds // 60) % 60
 
-            if context['piast_next_match'].first().date < datetime.now(timezone.utc):
-                context['days'] = 'Brak daty'
-            else:
-                context['piast_next_match_date'] = context['piast_next_match'].first().date
-                context['result'] = check.date - datetime.now(timezone.utc)
-                days = context['result'].days
-                hours = math.floor(context['result'].seconds / 3600)
-                minutes = (context['result'].seconds // 60) % 60
+                    if days == 1:
+                        context['days'] = f'{days} Dzień'
+                    else:
+                        context['days'] = f'{days} Dni'
 
-                if days == 1:
-                    context['days'] = f'{days} Dzień'
-                else:
-                    context['days'] = f'{days} Dni'
+                    if hours == 1:
+                        context['hours'] = f'{hours} Godzina'
+                    elif hours in (2, 3, 4, 22, 23, 24):
+                        context['hours'] = f'{hours} Godziny'
+                    else:
+                        context['hours'] = f'{hours} Godzin'
 
-                if hours == 1:
-                    context['hours'] = f'{hours} Godzina'
-                elif hours in (2, 3, 4, 22, 23, 24):
-                    context['hours'] = f'{hours} Godziny'
-                else:
-                    context['hours'] = f'{hours} Godzin'
+                    if minutes == 1:
+                        context['minutes'] = f'{minutes} Minuta'
+                    elif minutes in (2, 3, 4, 22, 23, 24):
+                        context['minutes'] = f'{minutes} Minuty'
+                    else:
+                        context['minutes'] = f'{minutes} Minut'
 
-                if minutes == 1:
-                    context['minutes'] = f'{minutes} Minuta'
-                elif minutes in (2, 3, 4, 22, 23, 24):
-                    context['minutes'] = f'{minutes} Minuty'
-                else:
-                    context['minutes'] = f'{minutes} Minut'
+                except:
+                    context['days'] = 'Brak daty'
+
 
         return context
 
@@ -562,24 +563,30 @@ class DownloadMatches(TemplateView):
                     full_date = f"{day} {month} {year} {time}"
                     date_as_datetime = datetime.strptime(full_date, '%d %m %Y %H:%M')
                     match_dict['date'] = date_as_datetime
+                    print(match_dict['date'])
                 elif date.text == '':
-                    match_dict['date'] = "2021-01-01"
+                    match_dict['date'] = 'brak daty'
 
                 matches_dict[matchweek_number].append(match_dict)
 
         return matches_dict
 
     def create_match_objects(self, matches_dict):
-
         MatchTest.objects.all().delete()
         created_matches = None
         for matchweek, list_of_dicts in matches_dict.items():
             for match in list_of_dicts:
+
+                if match['date'] == 'brak daty':
+                    date_match = None
+                else:
+                    date_match = match['date']
+
                 created_matches = MatchTest.objects.create(
                     match_week=match['matchweek_number'],
                     home_team=match['home_team'],
                     away_team=match['away_team'],
-                    date=match['date'],
+                    date=date_match,
                     home_team_goals=match['home_team_goals'],
                     away_team_goals=match['away_team_goals']
                 )
